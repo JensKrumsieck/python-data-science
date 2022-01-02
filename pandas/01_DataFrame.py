@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 df = pd.DataFrame(
@@ -11,4 +10,4 @@ df = pd.DataFrame(
 
 print(df)
 print(df["age"].describe())
-print(pd.Series([1,2,3], name="lol"))
+print(pd.Series([1, 2, 3], name="lol"))
