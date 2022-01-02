@@ -24,3 +24,34 @@ print(df.pivot(
 # ^
 # |
 # values from group as id
+
+
+def stack():
+    idxs = list(
+        zip(
+            *[
+                ["A", "A", "B", "B", "C", "C", "D", "D"],
+                ["1", "2", "1", "2", "1", "2", "1", "2"]
+            ]
+        )
+    )
+    # [('A', '1'), ('A', '2'), ('B', '1'), ('B', '2'), ('C', '1'), ('C', '2'), ('D', '1'), ('D', '2')]
+    index = pd.MultiIndex.from_tuples(idxs)
+    df = pd.DataFrame(np.random.randn(8, 3), index=index,
+                      columns=["X", "Y", "Z"])
+    print("####DATAFRAME####")
+    print(df)  # is of type DataFrame
+    print("####STACK####")
+    print(df.stack())  # is of type Series
+    df_unstack = df.unstack()
+    print("####UNSTACK####")
+    print(df_unstack)  # is of type DataFrame
+    print("####UNSTACK 2x####")
+    print(df_unstack.unstack())  # is of type Series
+    print("####RESTACK####")
+    print(df_unstack.stack())  # is of type DataFrame
+    print("####UNSTACK With Level Param####")
+    print(df.unstack(level=[0, 1]))  # is of type DataFrame
+
+
+stack()
