@@ -1,5 +1,5 @@
 numpy
 pandas
 sqlalchemy
-mysqlclient
 pymysql
+plotly
