@@ -1,2 +1,5 @@
 numpy
 pandas
+sqlalchemy
+mysqlclient
+pymysql
