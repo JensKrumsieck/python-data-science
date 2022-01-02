@@ -38,3 +38,19 @@ print(dtf.strftime("%d.%m.%Y"))
 print(pd.to_datetime([1625823884]))  # DANGER! UTC nanoseconds!
 print(pd.to_datetime([1625823884], unit="s"))
 # DatetimeIndex(['2021-07-09 09:44:44'], dtype='datetime64[ns]', freq=None)
+
+dateframe = pd.DataFrame(
+    np.random.randn(100000, 2),
+    columns=["Player 1", "Player 2"],
+    index=pd.date_range("20211213", periods=100000,
+                        freq="5min", tz="Europe/Berlin")
+)
+# january 2022 all data!
+print(dateframe["2022-01-01 00:00:00+01:00":"2022-02-02 00:00:00+01:00"])
+print(dateframe.loc["2022"])  # get all 2022
+
+print(dateframe.loc["2022-01-01 00:00:00+01:00"])  # get new year
+# Player 1   -0.161197
+# Player 2   -0.921572
+# Name: 2022-01-01 00:00:00+01:00, dtype: float64
+#print(dateframe.truncate(before="2022", after="2023"))
